@@ -11,7 +11,7 @@ const Details = ({ data }) => (
             <div
               style={{
                 width: '240px',
-                display: 'inline-block'
+                display: 'inline-block',
               }}
             >
               <PreviewCompatibleImage imageInfo={item} />
@@ -30,9 +30,9 @@ Details.propTypes = {
     PropTypes.shape({
       image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
       header: PropTypes.string,
-      text: PropTypes.string
+      text: PropTypes.string,
     })
-  )
+  ),
 }
 
 export default Details

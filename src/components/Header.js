@@ -10,7 +10,7 @@ const Header = ({ data }) => (
           : data.image
       })`,
       backgroundPosition: `top left`,
-      backgroundAttachment: `fixed`
+      backgroundAttachment: `fixed`,
     }}
   >
     <div
@@ -20,7 +20,7 @@ const Header = ({ data }) => (
         lineHeight: '1',
         justifyContent: 'space-around',
         alignItems: 'left',
-        flexDirection: 'column'
+        flexDirection: 'column',
       }}
     >
       <h1
@@ -32,7 +32,7 @@ const Header = ({ data }) => (
           backgroundColor: 'rgb(255, 68, 0)',
           color: 'white',
           lineHeight: '1',
-          padding: '0.25em'
+          padding: '0.25em',
         }}
       >
         {data.title}
@@ -46,7 +46,7 @@ const Header = ({ data }) => (
           backgroundColor: 'rgb(255, 68, 0)',
           color: 'white',
           lineHeight: '1',
-          padding: '0.25em'
+          padding: '0.25em',
         }}
       >
         {data.subtitle}

@@ -19,21 +19,21 @@ IndexPageTemplate.propTypes = {
   header: PropTypes.shape({
     image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     title: PropTypes.string,
-    heading: PropTypes.string
+    heading: PropTypes.string,
   }),
   primary: PropTypes.shape({
     heading: PropTypes.string,
     subheading: PropTypes.string,
-    description: PropTypes.string
+    description: PropTypes.string,
   }),
   details: PropTypes.shape({
-    list: PropTypes.array
+    list: PropTypes.array,
   }),
   action: PropTypes.shape({
     heading: PropTypes.string,
     description: PropTypes.string,
-    link: PropTypes.string
-  })
+    link: PropTypes.string,
+  }),
 }
 
 const IndexPage = ({ data }) => {
@@ -52,9 +52,9 @@ const IndexPage = ({ data }) => {
 IndexPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object
-    })
-  })
+      frontmatter: PropTypes.object,
+    }),
+  }),
 }
 
 export default IndexPage
