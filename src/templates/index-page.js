@@ -1,87 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import Features from '../components/Features'
+import Header from '../components/Header'
+import Primary from '../components/Primary'
+import Action from '../components/Action'
 
 export const IndexPageTemplate = ({ header, primary, details, action }) => (
-  <div>
-    <div
-      className="full-width-image margin-top-0"
-      style={{
-        backgroundImage: `url(${
-          !!header.image.childImageSharp
-            ? header.image.childImageSharp.fluid.src
-            : header.image
-        })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          height: '150px',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column'
-        }}
-      >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em'
-          }}
-        >
-          {header.title}
-        </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em'
-          }}
-        >
-          {header.subtitle}
-        </h3>
-      </div>
-    </div>
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="content">
-                  <div className="tile">
-                    <h1 className="title">{primary.heading}</h1>
-                  </div>
-                  <div className="tile">
-                    <h3 className="subtitle">{primary.subheading}</h3>
-                  </div>
-                  <div className="tile">
-                    <p className="subtitle">{primary.description}</p>
-                  </div>
-                </div>
-                <Features gridItems={details.list} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+  <Layout>
+    <Header data={header} />
+    <Primary data={primary} details={details} />
+    <Action data={action} />
+  </Layout>
 )
 
 IndexPageTemplate.propTypes = {
@@ -109,14 +40,12 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
-    <Layout>
-      <IndexPageTemplate
-        header={frontmatter.header}
-        primary={frontmatter.primary}
-        details={frontmatter.details}
-        action={frontmatter.action}
-      />
-    </Layout>
+    <IndexPageTemplate
+      header={frontmatter.header}
+      primary={frontmatter.primary}
+      details={frontmatter.details}
+      action={frontmatter.action}
+    />
   )
 }
 
