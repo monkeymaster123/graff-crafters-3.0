@@ -1,25 +1,26 @@
 ---
 templateKey: index-page
 header:
-  title: Title
-  subtitle: Subtitle
   image: /img/home-jumbotron.jpg
+  subtitle: The Graftsmen of Landscaping
+  title: Graff Crafters
 primary:
-  heading: Heading
-  subheading: Subheading
-  description: words
+  description: even more words
+  heading: Introduction about us
+  subheading: Some more words
 details:
   list:
     - image: /img/coffee.png
-      text: Blurb 1
+      text: Who we are
     - image: /img/coffee-gear.png
-      text: Blurb 2
+      text: What we do
     - image: /img/tutorials.png
-      text: Blurb 3
+      text: Why we do it
     - image: /img/meeting-space.png
-      text: Blurb 4
+      text: Something else
 action:
-  heading: CTA Heading
-  description: CTA Description
-  link: https://google.com
+  description: Blog shoutout
+  heading: Contact us
+  link: 'https://graffcrafters.com/contact'
 ---
+
