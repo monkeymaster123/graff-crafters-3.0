@@ -5,25 +5,18 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 
-export const IndexPageTemplate = ({
-  image,
-  title,
-  heading,
-  subheading,
-  mainpitch,
-  description,
-  intro,
-  main,
-}) => (
+export const IndexPageTemplate = ({ header, primary, details, action }) => (
   <div>
     <div
       className="full-width-image margin-top-0"
       style={{
         backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
+          !!header.image.childImageSharp
+            ? header.image.childImageSharp.fluid.src
+            : header.image
         })`,
         backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`,
+        backgroundAttachment: `fixed`
       }}
     >
       <div
@@ -33,7 +26,7 @@ export const IndexPageTemplate = ({
           lineHeight: '1',
           justifyContent: 'space-around',
           alignItems: 'left',
-          flexDirection: 'column',
+          flexDirection: 'column'
         }}
       >
         <h1
@@ -44,10 +37,10 @@ export const IndexPageTemplate = ({
             backgroundColor: 'rgb(255, 68, 0)',
             color: 'white',
             lineHeight: '1',
-            padding: '0.25em',
+            padding: '0.25em'
           }}
         >
-          {title}
+          {header.title}
         </h1>
         <h3
           className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
@@ -57,10 +50,10 @@ export const IndexPageTemplate = ({
             backgroundColor: 'rgb(255, 68, 0)',
             color: 'white',
             lineHeight: '1',
-            padding: '0.25em',
+            padding: '0.25em'
           }}
         >
-          {subheading}
+          {header.subtitle}
         </h3>
       </div>
     </div>
@@ -72,38 +65,16 @@ export const IndexPageTemplate = ({
               <div className="content">
                 <div className="content">
                   <div className="tile">
-                    <h1 className="title">{mainpitch.title}</h1>
+                    <h1 className="title">{primary.heading}</h1>
                   </div>
                   <div className="tile">
-                    <h3 className="subtitle">{mainpitch.description}</h3>
+                    <h3 className="subtitle">{primary.subheading}</h3>
+                  </div>
+                  <div className="tile">
+                    <p className="subtitle">{primary.description}</p>
                   </div>
                 </div>
-                <div className="columns">
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      {heading}
-                    </h3>
-                    <p>{description}</p>
-                  </div>
-                </div>
-                <Features gridItems={intro.blurbs} />
-                <div className="columns">
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/products">
-                      See all products
-                    </Link>
-                  </div>
-                </div>
-                <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
-                  </h3>
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
-                      Read more
-                    </Link>
-                  </div>
-                </div>
+                <Features gridItems={details.list} />
               </div>
             </div>
           </div>
@@ -114,15 +85,24 @@ export const IndexPageTemplate = ({
 )
 
 IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
+  header: PropTypes.shape({
+    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    title: PropTypes.string,
+    heading: PropTypes.string
   }),
+  primary: PropTypes.shape({
+    heading: PropTypes.string,
+    subheading: PropTypes.string,
+    description: PropTypes.string
+  }),
+  details: PropTypes.shape({
+    list: PropTypes.array
+  }),
+  action: PropTypes.shape({
+    heading: PropTypes.string,
+    description: PropTypes.string,
+    link: PropTypes.string
+  })
 }
 
 const IndexPage = ({ data }) => {
@@ -131,13 +111,10 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <IndexPageTemplate
-        image={frontmatter.image}
-        title={frontmatter.title}
-        heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
-        intro={frontmatter.intro}
+        header={frontmatter.header}
+        primary={frontmatter.primary}
+        details={frontmatter.details}
+        action={frontmatter.action}
       />
     </Layout>
   )
@@ -146,9 +123,9 @@ const IndexPage = ({ data }) => {
 IndexPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
-  }),
+      frontmatter: PropTypes.object
+    })
+  })
 }
 
 export default IndexPage
@@ -157,23 +134,24 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
+        header {
+          title
+          subtitle
+          image {
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
-        heading
-        subheading
-        mainpitch {
-          title
+        primary {
+          heading
+          subheading
           description
         }
-        description
-        intro {
-          blurbs {
+        details {
+          list {
             image {
               childImageSharp {
                 fluid(maxWidth: 240, quality: 64) {
@@ -183,8 +161,11 @@ export const pageQuery = graphql`
             }
             text
           }
+        }
+        action {
           heading
           description
+          link
         }
       }
     }

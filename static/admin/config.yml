@@ -19,32 +19,37 @@ collections:
               widget: 'hidden',
               default: 'index-page',
             }
-          - { label: Title, name: title, widget: string }
-          - { label: Image, name: image, widget: image }
-          - { label: Heading, name: heading, widget: string }
-          - { label: Subheading, name: subheading, widget: string }
           - {
-              label: Mainpitch,
-              name: mainpitch,
+              label: Header,
+              name: header,
               widget: object,
               fields:
                 [
                   { label: Title, name: title, widget: string },
-                  { label: Description, name: description, widget: text },
+                  { label: Subtitle, name: subtitle, widget: string },
+                  { label: Image, name: image, widget: image },
                 ],
             }
-          - { label: Description, name: description, widget: string }
           - {
-              label: Intro,
-              name: intro,
+              label: Primary,
+              name: primary,
               widget: object,
               fields:
                 [
                   { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: text },
+                  { label: Subheading, name: subheading, widget: string },
+                  { label: Description, name: description, widget: string },
+                ],
+            }
+          - {
+              label: 'Details Grid',
+              name: details,
+              widget: object,
+              fields:
+                [
                   {
-                    label: Blurbs,
-                    name: blurbs,
+                    label: Details,
+                    name: list,
                     widget: list,
                     fields:
                       [
@@ -55,43 +60,14 @@ collections:
                 ],
             }
           - {
-              label: Main,
-              name: main,
+              label: 'Call to Action',
+              name: action,
               widget: object,
               fields:
                 [
                   { label: Heading, name: heading, widget: string },
                   { label: Description, name: description, widget: text },
-                  {
-                    label: Image1,
-                    name: image1,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                  {
-                    label: Image2,
-                    name: image2,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                  {
-                    label: Image3,
-                    name: image3,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
+                  { label: Link, name: link, widget: string },
                 ],
             }
       - file: 'src/pages/about/index.md'
