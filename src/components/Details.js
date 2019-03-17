@@ -17,6 +17,7 @@ const Details = ({ data }) => (
               <PreviewCompatibleImage imageInfo={item} />
             </div>
           </div>
+          <h3>{item.header}</h3>
           <p>{item.text}</p>
         </section>
       </div>
@@ -28,6 +29,7 @@ Details.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+      header: PropTypes.string,
       text: PropTypes.string
     })
   )
