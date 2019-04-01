@@ -10,13 +10,17 @@ primary:
   subheading: Some more words
 details:
   list:
-    - image: /img/coffee.png
+    - header: Who we are
+      image: /img/coffee.png
       text: Who we are
-    - image: /img/coffee-gear.png
+    - header: What we do
+      image: /img/coffee-gear.png
       text: What we do
-    - image: /img/tutorials.png
+    - header: Why we do it
+      image: /img/tutorials.png
       text: Why we do it
-    - image: /img/meeting-space.png
+    - header: Something else
+      image: /img/meeting-space.png
       text: Something else
 action:
   description: Blog shoutout
