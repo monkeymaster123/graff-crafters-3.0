@@ -11,13 +11,14 @@ const Details = ({ data }) => (
             <div
               style={{
                 width: '240px',
-                display: 'inline-block',
+                display: 'inline-block'
               }}
             >
               <PreviewCompatibleImage imageInfo={item} />
             </div>
           </div>
-          <h3>{item.header}</h3>
+          <h2>{item.header}</h2>
+          <h3>{item.subheader}</h3>
           <p>{item.text}</p>
         </section>
       </div>
@@ -30,9 +31,10 @@ Details.propTypes = {
     PropTypes.shape({
       image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
       header: PropTypes.string,
-      text: PropTypes.string,
+      subheader: PropTypes.string,
+      text: PropTypes.string
     })
-  ),
+  )
 }
 
 export default Details

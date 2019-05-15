@@ -70,6 +70,12 @@ collections:
                       [
                         { label: Image, name: image, widget: image },
                         { label: Header, name: header, widget: string },
+                        {
+                          label: Subheader,
+                          name: subheader,
+                          widget: string,
+                          required: false,
+                        },
                         { label: Text, name: text, widget: text },
                       ],
                   },
