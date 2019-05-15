@@ -9,8 +9,8 @@ const Header = ({ data }) => (
           ? data.image.childImageSharp.fluid.src
           : data.image
       })`,
-      backgroundPosition: `top left`,
-      backgroundAttachment: `fixed`,
+      backgroundPosition: `center bottom`,
+      backgroundAttachment: `fixed`
     }}
   >
     <div
@@ -20,19 +20,18 @@ const Header = ({ data }) => (
         lineHeight: '1',
         justifyContent: 'space-around',
         alignItems: 'left',
-        flexDirection: 'column',
+        flexDirection: 'column'
       }}
     >
       <h1
         className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
         style={{
           textAlign: 'center',
-          boxShadow:
-            'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-          backgroundColor: 'rgb(255, 68, 0)',
+          boxShadow: '#05981A 0.5rem 0px 0px, #05981A -0.5rem 0px 0px',
+          backgroundColor: '#05981A',
           color: 'white',
           lineHeight: '1',
-          padding: '0.25em',
+          padding: '0.25em'
         }}
       >
         {data.title}
@@ -41,12 +40,11 @@ const Header = ({ data }) => (
         className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
         style={{
           textAlign: 'center',
-          boxShadow:
-            'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-          backgroundColor: 'rgb(255, 68, 0)',
+          boxShadow: '#05981A 0.5rem 0px 0px, #05981A -0.5rem 0px 0px',
+          backgroundColor: '#05981A',
           color: 'white',
           lineHeight: '1',
-          padding: '0.25em',
+          padding: '0.25em'
         }}
       >
         {data.subtitle}
